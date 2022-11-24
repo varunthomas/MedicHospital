@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SeatSystem.seatSystemInst.Initialise();
+        //ReceptionQueue.recInst.InitReception();
+        LoungeQueue.loungeInst.InitLounge();
     }
 
     // Update is called once per frame
@@ -26,13 +27,13 @@ public class GameManager : MonoBehaviour
     IEnumerator GeneratePatient()
     {
         isCoroutineRunning = true;
-        Debug.Log("Starting coroutine");
+        //Debug.Log("Starting coroutine");
         yield return new WaitForSeconds(5);
         
         patientObject = (GameObject)Instantiate(Resources.Load("Patient"), new Vector2(0,-4), Quaternion.identity);
         patient = patientObject.GetComponent<Patient>();
         patient.EnterHospital(id++);
-        Debug.Log("Completed coroutine");
+        //Debug.Log("Completed coroutine");
         isCoroutineRunning = false;
 
     }
