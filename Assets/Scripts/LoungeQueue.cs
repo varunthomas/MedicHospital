@@ -28,14 +28,14 @@ public class LoungeQueue : QueueSystem
         
         Initialise();
         
-        freeSpot.Enqueue(GameObject.Find("Seat1"));
-        index[0] = GameObject.Find("Seat1");
-        freeSpot.Enqueue(GameObject.Find("Seat2"));
-        index[1] = GameObject.Find("Seat2");
-        freeSpot.Enqueue(GameObject.Find("Seat3"));
-        index[2] = GameObject.Find("Seat3");
-        freeSpot.Enqueue(GameObject.Find("Seat4"));
-        index[3] = GameObject.Find("Seat4");
+        //freeSpot.Enqueue(GameObject.Find("Seat1"));
+        //index[0] = GameObject.Find("Seat1");
+        //freeSpot.Enqueue(GameObject.Find("Seat2"));
+        //index[1] = GameObject.Find("Seat2");
+        //freeSpot.Enqueue(GameObject.Find("Seat3"));
+        //index[2] = GameObject.Find("Seat3");
+        //freeSpot.Enqueue(GameObject.Find("Seat4"));
+        //index[3] = GameObject.Find("Seat4");
         
     }
 }

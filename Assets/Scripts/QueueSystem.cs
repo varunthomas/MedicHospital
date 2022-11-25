@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class QueueSystem : MonoBehaviour
 {
+    public GameObject spotPrefab;
     protected Queue freeSpot;
+    int maxQueueSize = 20;
     protected GameObject[] index;
+
+    int row = 0, col = 0;
+    int currentRowSize = 1;
     //public static QueueSystem queueSystemInst;
     /*private void Awake() 
     { 
@@ -26,12 +31,38 @@ public class QueueSystem : MonoBehaviour
 
     public void Initialise()
     {
-        freeSpot = new Queue(4);
-        index = new GameObject[4];
+        freeSpot = new Queue(maxQueueSize);
+        for(;row<currentRowSize;row++)
+        {
+	        for(;col<4;col++)
+	        {
+                freeSpot.Enqueue(Instantiate(spotPrefab, new Vector2(row*1.5f,col*1.5f), Quaternion.identity));
+	        }
+        }
+        //freeSpot.Enqueue(Instantiate(spotPrefab, new Vector2(row*1.5f,col*1.5f), Quaternion.identity)); //(0,0)
+        //col++;
+        //freeSpot.Enqueue(Instantiate(spotPrefab, new Vector2(row*1.5f,col*1.5f), Quaternion.identity)); //(0,1)
+        //col++;
+        //index = new GameObject[4];
     
         
     }
 
+    public void IncreaseQueueSize()
+    {
+        col = 0;
+        Debug.Log("IncreaseQueueSize");
+        currentRowSize++;
+        for(;row<currentRowSize;row++)
+        {
+            Debug.Log("row is " + row + " current row size " + currentRowSize +" col is " + col);
+	        for(;col<4;col++)
+	        {
+                Debug.Log("Adding seats");
+                freeSpot.Enqueue(Instantiate(spotPrefab, new Vector2(row*1.5f,col*1.5f), Quaternion.identity));
+	        }
+        }
+    }
     public GameObject GetFreeObject()
     {
         GameObject seat;
@@ -58,7 +89,7 @@ public class QueueSystem : MonoBehaviour
             return false;
     }
 
-    public int GetIndex(GameObject obj)
+    /*public int GetIndex(GameObject obj)
     {
         for(int i=0;i <4;i++)
         {
@@ -68,7 +99,7 @@ public class QueueSystem : MonoBehaviour
             }
         }
         return -1;
-    }
+    }*/
 
     public int getCount()
     {

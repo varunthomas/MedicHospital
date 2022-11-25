@@ -14,7 +14,7 @@ public class Patient : MonoBehaviour
         Exit
     }
     private int patientId;
-    private float speed = 2.0f;
+    private float speed = 3.0f;
     private GameObject targetRec;
     private GameObject targetLounge;
     private Queue occupiedSeats;

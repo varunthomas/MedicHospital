@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     int id = 0;
     bool isCoroutineRunning = false;
     int value = 0;
+    int upgradeCount = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,5 +59,16 @@ public class GameManager : MonoBehaviour
     {
         value+=100;
         cashValue.text = value.ToString();
+    }
+
+    public void UpgradeSeats()
+    {
+        if(value >= upgradeCount*1500)
+        {
+            LoungeQueue.loungeInst.IncreaseQueueSize();
+            value = value - upgradeCount*1500;
+            upgradeCount++;
+            cashValue.text = value.ToString();
+        }
     }
 }
