@@ -34,7 +34,7 @@ public class Patient : MonoBehaviour
         Debug.Log("Patient start");
         doctor = GameObject.Find("Doctor");
 
-        currentState = PatientState.Lounge;
+        currentState = PatientState.Enter;
         if(LoungeQueue.loungeInst.isSeatFull())
         {
             currentState = PatientState.Exit;
@@ -60,7 +60,17 @@ public class Patient : MonoBehaviour
         //Debug.Log("Queue count " + LoungeQueue.loungeInst.getCount());
         step = speed * Time.deltaTime;
 
-        if (currentState == PatientState.Waiting)
+        if(currentState == PatientState.Enter)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetLounge.transform.position, step);
+            if(transform.position.y > GameObject.Find("Entry").transform.position.y)
+            {
+                Debug.Log("+100rs");
+                GameManager.gameInst.UpdateCash();
+                currentState = PatientState.Lounge;
+            }
+        }
+        else if (currentState == PatientState.Waiting)
         {
             if(doctor.GetComponent<Doctor>().doctorFree)
             {
