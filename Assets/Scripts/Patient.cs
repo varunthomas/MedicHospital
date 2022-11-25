@@ -57,7 +57,7 @@ public class Patient : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Queue count " + LoungeQueue.loungeInst.getCount());
+        //Debug.Log("Queue count " + LoungeQueue.loungeInst.getCount());
         step = speed * Time.deltaTime;
 
         if (currentState == PatientState.Waiting)
